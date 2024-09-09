@@ -1,5 +1,6 @@
 import 'package:fcmapp/app/permissions/notification_permissions.dart';
 import 'package:fcmapp/app/services/server_key_service.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'services/notification_service.dart';
 
@@ -23,6 +24,8 @@ class _UiViewState extends State<UiView> {
     notificationPermissions.requestNotificationPermission();
     notificationService.firebaseInit(context);
     notificationService.bgAndTrSatate(context);
+    FirebaseMessaging.instance.subscribeToTopic('allDevices');
+
   }
   @override
   Widget build(BuildContext context) => Scaffold(
